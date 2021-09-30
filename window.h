@@ -11,6 +11,5 @@ struct Window
 	SDL_GLContext GLContext;
 };
 
-void CreateWindow(std::string windowName, int resX, int resY);
+Window CreateWindow(std::string windowName, int resX, int resY);
 void DestroyWindow(Window* window);
-void SwapBuffers();

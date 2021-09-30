@@ -3,8 +3,8 @@
 
 int main()
 {
-	std::cout << "Hello World!\n";
-	CreateWindow("Nova Engine", 1280, 720);
+	Window window;
+	window = CreateWindow("Nova Engine", 1280, 720);
 
 	SDL_Event event;
 	bool running = true;
@@ -16,8 +16,9 @@ int main()
 			{
 				running = false;
 			}
+			SDL_GL_SwapWindow(window.SDLWindow);
 		}
 	}
-
+	std::cout << "NovaEngine Terminated";
 	return 0;
 }

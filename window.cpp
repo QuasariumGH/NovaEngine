@@ -1,7 +1,7 @@
 #include "Window.h"
 #include <iostream>
 
-void CreateWindow(std::string windowName, int resX, int resY)
+Window CreateWindow(std::string windowName, int resX, int resY)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
@@ -24,10 +24,18 @@ void CreateWindow(std::string windowName, int resX, int resY)
 		std::cerr << "Failed to Initialize OpenGL" << std::endl;
 		exit(1);
 	}
+	else
+	{
+		std::cout << "Initialized OpenGL " << std::endl;
+	}
 
+	if (window.SDLWindow != NULL)
+	{
+		std::cout << "NovaEngine Started" << std::endl;
+	}
 	SDL_DisplayMode dm;
 	SDL_GetCurrentDisplayMode(0, &dm);
-
+	return window;
 }
 
 void DestroyWindow(Window* window)
@@ -37,7 +45,4 @@ void DestroyWindow(Window* window)
 	SDL_Quit();
 }
 
-void SwapBuffers()
-{
-	//SDL_GL_SwapWindow();
-}
+

@@ -1,4 +1,8 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(519,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (gameengine1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (gameengine1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  window.cpp
+  glad.cpp
+  main.cpp
+  Generating Code...
 window.obj : error LNK2019: unresolved external symbol SDL_GetCurrentDisplayMode referenced in function "void __cdecl CreateWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?CreateWindow@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
 window.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "void __cdecl CreateWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?CreateWindow@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
 window.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "void __cdecl DestroyWindow(struct Window *)" (?DestroyWindow@@YAXPEAUWindow@@@Z)
@@ -8,5 +12,6 @@ window.obj : error LNK2019: unresolved external symbol SDL_GL_CreateContext refe
 window.obj : error LNK2019: unresolved external symbol SDL_GL_DeleteContext referenced in function "void __cdecl DestroyWindow(struct Window *)" (?DestroyWindow@@YAXPEAUWindow@@@Z)
 window.obj : error LNK2019: unresolved external symbol SDL_Init referenced in function "void __cdecl CreateWindow(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int)" (?CreateWindow@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH@Z)
 window.obj : error LNK2019: unresolved external symbol SDL_Quit referenced in function "void __cdecl DestroyWindow(struct Window *)" (?DestroyWindow@@YAXPEAUWindow@@@Z)
-C:\Users\djher\OneDrive\Documents\NovaEngine\lib\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\djher\OneDrive\Documents\NovaEngine\x64\Debug\NovaEngine.exe : fatal error LNK1120: 9 unresolved externals
+main.obj : error LNK2019: unresolved external symbol SDL_PollEvent referenced in function main
+C:\Users\KT\Documents\NovaEngine\lib\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\KT\Documents\NovaEngine\x64\Debug\NovaEngine.exe : fatal error LNK1120: 10 unresolved externals
