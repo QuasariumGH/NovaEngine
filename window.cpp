@@ -16,7 +16,7 @@ void CreateWindow(std::string windowName, int resX, int resY)
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	Window window;
-	window.SDLWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, resX, resY, 0);
+	window.SDLWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, resX, resY, SDL_WINDOW_OPENGL);
 	window.GLContext = SDL_GL_CreateContext(window.SDLWindow);
 
 	if (!gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress))
@@ -24,8 +24,10 @@ void CreateWindow(std::string windowName, int resX, int resY)
 		std::cerr << "Failed to Initialize OpenGL" << std::endl;
 		exit(1);
 	}
+
 	SDL_DisplayMode dm;
 	SDL_GetCurrentDisplayMode(0, &dm);
+
 }
 
 void DestroyWindow(Window* window)

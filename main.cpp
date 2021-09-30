@@ -4,6 +4,20 @@
 int main()
 {
 	std::cout << "Hello World!\n";
-	CreateWindow("(C) Qusarium Engine 2021", 1920, 1080);
+	CreateWindow("Nova Engine", 1280, 720);
+
+	SDL_Event event;
+	bool running = true;
+	while (running) 
+	{
+		while (SDL_PollEvent(&event)) 
+		{
+			if (event.type == SDL_QUIT) 
+			{
+				running = false;
+			}
+		}
+	}
+
 	return 0;
 }
