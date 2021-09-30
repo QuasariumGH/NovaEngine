@@ -1,2 +1,4 @@
-# NovaEngine
-"Nova Game Engine" proposed for 2021 Math Honor's Project.
+#NovaEngine
+"Nova Game Engine" proposed for 2021 HTHNC Math Honor's Project.
+Property of Dillon Jones
+No rights reserved.
