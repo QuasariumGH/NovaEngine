@@ -5,12 +5,11 @@ int main()
 {
 	Window window;
 	window = CreateWindow("Nova Engine", 1280, 720);
-
 	SDL_Event event;
 	bool running = true;
-	while (running)
+	while (running) // window loop
 	{
-		/*glLoadIdentity();
+		glLoadIdentity();
 		glBegin(GL_QUADS);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glColor3f(0.0f, 0.0f, 1.0f); 
@@ -21,10 +20,10 @@ int main()
 		glVertex3f(1.0f, 0.0f, 0.0f);
 		glColor3f(1.0f, 0.0f, 1.0f); 
 		glVertex3f(0.0f, 1.0f, 0.0f);
-		glEnd();*/
+		glEnd();
 
 		SDL_GL_SwapWindow(window.SDLWindow);
-		while (SDL_PollEvent(&event))
+		while (SDL_PollEvent(&event)) // event loop
 		{
 			if (event.type == SDL_QUIT)
 			{
