@@ -1,21 +1,6 @@
 #include "shader.h"
 #include <iostream>
-
-static int CreateShader(const std::string& vertextShader, const std::string& fragmentshader)
-{
-	unsigned int program = glCreateProgram();
-	unsigned int vertexShader = CompileShader(GL_VERTEX_SHADER, vertextShader);
-	unsigned int fragmentShader = CompileShader(GL_FRAGMENT_SHADER, fragmentshader);
-
-	glAttachShader(program, vertexShader);
-	glAttachShader(program, fragmentShader);
-	glLinkProgram(program);
-	glValidateProgram(program);
-
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-	return program;
-}
+#include <fstream>
 
 static unsigned int CompileShader(unsigned int type, const std::string& source)
 {
@@ -33,9 +18,24 @@ static unsigned int CompileShader(unsigned int type, const std::string& source)
 		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
 		char* message = (char*)alloca(length * sizeof(char));
 		glGetShaderInfoLog(id, length, &length, message);
-		std::cout << "Failed to compile" << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader! " << std::endl;
+		std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader! ";
 		std::cout << "Message: " << message << std::endl;
 	}
 	return id;
+}
+
+int CreateShader(const std::string& vertextShader, const std::string& fragmentshader)
+{
+	unsigned int program = glCreateProgram();
+	unsigned int vertexShader = CompileShader(GL_VERTEX_SHADER, vertextShader);
+	unsigned int fragmentShader = CompileShader(GL_FRAGMENT_SHADER, fragmentshader);
+
+	glAttachShader(program, vertexShader);
+	glAttachShader(program, fragmentShader);
+	glLinkProgram(program);
+	glValidateProgram(program);
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+	return program;
 }
 

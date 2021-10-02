@@ -1,6 +1,3 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (gameengine1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (gameengine1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   main.cpp
-  shader.cpp
-C:\Users\KT\Documents\NovaEngine\main.cpp(5,1): error C2144: syntax error: 'int' should be preceded by ';'
-  Generating Code...
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\cmath(17,27): error C2144: syntax error: 'double' should be preceded by ';'
+  NovaEngine.vcxproj -> C:\Users\djher\OneDrive\Documents\NovaEngine\x64\Debug\NovaEngine.exe

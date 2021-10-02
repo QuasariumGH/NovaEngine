@@ -1,6 +1,27 @@
 #include <iostream>
+#include <fstream>
 #include "window.h"
 #include "shader.h"
+#include <unordered_map>
+
+std::string ReadFile(const std::string& filepath)
+{
+	std::string result;
+	std::ifstream stream(filepath, std::ios::in, std::ios::binary);
+	if (stream)
+	{
+		stream.seekg(0, std::ios::end);
+		result.resize(stream.tellg());
+		stream.seekg(0, std::ios::beg);
+		stream.read(&result[0], result.size());
+		stream.close();
+	}
+	else
+	{
+		std::cerr << "Error: Could not load filepath for shader. Attempted filepath: " << filepath << std::endl;
+	}
+	return result;
+}
 
 int main()
 {
@@ -19,30 +40,15 @@ int main()
 	unsigned int buffer;
 	glGenBuffers(1, &buffer);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-
 	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
-	std::string vertexShader =
-	"#version 330 core\n"
-	"\n"
-	"layout(location = 0) in vec4 position;"
-	"\n"
-	"void main()\n"
-	"{\n"
-	"gl_Position = position;\n"
-	"}\n";
-	std::string fragmentShader =
-	"#version 330 core\n"
-	"\n"
-	"layout(location = 0) out vec4 color;"
-	"\n"
-	"void main()\n"
-	"{\n"
-	"color = vec4(1.0, 0.0, 0.0, 1.0);"
-	"}\n";
-	;
-	unsigned int htShader = CreateShader(vertexShader, fragmentShader);
+
+	std::string vsDirectory = "assets/shaders/vertexshader.glsl";
+	std::string fsDirectory = "assets/shaders/fragmentshader.glsl";
+	std::string vertexShader = ReadFile(vsDirectory);
+	std::string fragmentShader = ReadFile(fsDirectory);
+	int htShader = CreateShader(vertexShader, fragmentShader);
 	glUseProgram(htShader);
 	
 	while (running) // window loop
@@ -50,7 +56,6 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		glDrawArrays(GL_TRIANGLES, 0, 3); //Renders triangle to sscreen
 		SDL_GL_SwapWindow(window.SDLWindow);
-
 		while (SDL_PollEvent(&event)) // event loop
 		{
 			if (event.type == SDL_QUIT)
