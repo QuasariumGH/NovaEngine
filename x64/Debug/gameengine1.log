@@ -1,8 +1,0 @@
-﻿  glad.cpp
-  main.cpp
-  window.cpp
-  Generating Code...
-window.obj : error LNK2019: unresolved external symbol SDL_CreateWindow referenced in function "struct Window __cdecl CreateWindow(char *,int,int)" (?CreateWindow@@YA?AUWindow@@PEADHH@Z)
-window.obj : error LNK2019: unresolved external symbol SDL_DestroyWindow referenced in function "void __cdecl DestroyWindow(struct Window *)" (?DestroyWindow@@YAXPEAUWindow@@@Z)
-C:\Users\djher\OneDrive\Documents\GameEngine1\gameengine1\lib\SDL2.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\djher\OneDrive\Documents\GameEngine1\gameengine1\x64\Debug\gameengine1.exe : fatal error LNK1120: 2 unresolved externals

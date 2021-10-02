@@ -30,19 +30,32 @@ int main()
 	SDL_Event event;
 	bool running = true;
 
-	float vertices[6] =
+	float vertices[] =
 	{
-		-0.5f, -0.5f, //Bottom right
-		0.0f,0.5f, //Top Middle
-		0.5f, -0.5f // Bottom Left
+		0.0f, 1.0f, //Top Middle
+		1.0f, 0.0f, 0.0f, //color
+
+		1.0f, -1.0f, //Bottom right
+		0.0f, 1.0f, 0.0f, //color
+
+		-1.0f, -1.0f, // Bottom Left
+		0.0f, 0.0f, 1.0f //color
 	};
 	
 	unsigned int buffer;
 	glGenBuffers(1, &buffer);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, false, 5 * sizeof(float), 0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, false, 5 * sizeof(float), (char*)(2 * (sizeof(float))));
+	
+	GLushort indices[] = { 0,1,2,0,3,4 };
+	GLuint indexBufferID;
+	glGenBuffers(1, &indexBufferID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferID);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 	std::string vsDirectory = "assets/shaders/vertexshader.glsl";
 	std::string fsDirectory = "assets/shaders/fragmentshader.glsl";
