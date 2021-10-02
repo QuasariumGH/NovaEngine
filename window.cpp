@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "window.h"
 #include <iostream>
 
 Window CreateWindow(std::string windowName, int resX, int resY)

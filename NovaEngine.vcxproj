@@ -152,8 +152,10 @@
     <ClCompile Include="..\novaengine\window.cpp" />
     <ClCompile Include="glad.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="shader.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
