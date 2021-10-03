@@ -152,13 +152,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\novaengine\window.cpp" />
+    <ClCompile Include="filemanagement.cpp" />
     <ClCompile Include="glad.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="filemanagement.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="assets\shaders\hellotriangle.psh" />
+    <None Include="assets\shaders\hellotriangle.vsh" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,6 +3,7 @@
 
 Window CreateWindow(std::string windowName, int resX, int resY)
 {
+	//Initializes Attribues
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
@@ -22,29 +23,36 @@ Window CreateWindow(std::string windowName, int resX, int resY)
 		std::cerr << "Failed to Initialize OpenGL! gladLoadGLLoader((GLADloadproc)SDL_GL_GetProcAddress) returned NULL " << std::endl;
 		exit(1);
 	}
-	else
-	{
-		std::cout << "Initialized OpenGL! " << std::endl;
-	}
 	if (!window.SDLWindow)
 	{
 		std::cout << "Window could not be opened! Window.SDLWindow returned NULL" << std::endl;
 		exit(1);
-	}
-	else
-	{
-		std::cout << "Window Opened!" << std::endl;
 	}
 	SDL_DisplayMode dm;
 	SDL_GetCurrentDisplayMode(0, &dm);
 	return window;
 }
 
-//void DestroyWindow(Window* window)
-//{
-//	SDL_GL_DeleteContext(window->GLContext);
-//	SDL_DestroyWindow(window->SDLWindow);
-//	SDL_Quit();
-//}
+void UpdateWindowEvents(Window window, bool *running)
+{
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) // event loop
+	{
+		if (event.type == SDL_QUIT)
+		{
+			*running = false;
+		}
+		if (event.type == SDL_WINDOWEVENT)
+		{
+			if (event.window.event == SDL_WINDOWEVENT_RESIZED)
+			{
+				int w;
+				int h;
+				SDL_GetWindowSize(window.SDLWindow, &w, &h);
+				glViewport(0, 0, w, h);
+			}
+		}
+	}
+}
 
 

@@ -10,3 +10,4 @@ struct Window
 	SDL_GLContext GLContext;
 };
 Window CreateWindow(std::string windowName, int resX, int resY);
+void UpdateWindowEvents(Window window, bool* running);

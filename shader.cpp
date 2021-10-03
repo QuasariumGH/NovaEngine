@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-static unsigned int CompileShader(unsigned int type, const std::string& source)
+unsigned int CompileShader(unsigned int type, const std::string& source)
 {
 	unsigned int id = glCreateShader(type);
 	const char* src = source.c_str();
@@ -18,13 +18,12 @@ static unsigned int CompileShader(unsigned int type, const std::string& source)
 		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
 		char* message = (char*)alloca(length * sizeof(char));
 		glGetShaderInfoLog(id, length, &length, message);
-		std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader! ";
-		std::cout << "Message: " << message << std::endl;
+		std::cout << "Failed to compile " << type << " shader: " << message << std::endl;
 	}
 	return id;
 }
 
-int CreateShader(const std::string& vertextShader, const std::string& fragmentshader)
+unsigned int CreateShader(const std::string& vertextShader, const std::string& fragmentshader)
 {
 	unsigned int program = glCreateProgram();
 	unsigned int vertexShader = CompileShader(GL_VERTEX_SHADER, vertextShader);
