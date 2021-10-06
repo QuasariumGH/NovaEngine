@@ -14,7 +14,7 @@ Window CreateWindow(std::string windowName, int resX, int resY)
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
+	
 	Window window;
 	window.SDLWindow = SDL_CreateWindow(windowName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, resX, resY, SDL_WINDOW_OPENGL| SDL_WINDOW_RESIZABLE);
 	window.GLContext = SDL_GL_CreateContext(window.SDLWindow);
