@@ -1,5 +1,4 @@
 #include <iostream>
-#include <glm>
 #include "window.h"
 #include "shader.h"
 #include "filemanagement.h"
@@ -13,40 +12,51 @@ struct Vec3 {
 struct Vertex{
 	Vec3 position = {0.0f, 0.0f, 0.0f}; 
 	Vec3 color = {0.0f, 0.0f, 0.0f};
-
 };
 
 struct Camera{
-	Vec3 offset;
-
+	Vec3 offset = {-0.5, -1.5, 2};
 };
+
+Vec3 add(Vec3 a, Vec3 b)
+{
+	Vec3 sumVec;
+	sumVec.x = a.x + b.x;
+	sumVec.y = a.y + b.y;
+	sumVec.z = a.z + b.z;
+	return sumVec;
+}
 
 int main()
 {
 	Window window;
 	window = CreateWindow("Nova Engine", 1280, 720);
 
-	Camera VeiwPort;
-	VeiwPort.offset = {-0.5, -1.5, 2};
+	Camera viewPort;
 
-	Vertex v1;aq
-	v1.position = {0.0f + VeiwPort.offset.x, 0.0f + VeiwPort.offset.y,0.0f + VeiwPort.offset.z} ;
+	Vertex v1;
+	v1.position = {0.0f, 0.0f,0.0};
+	v1.position = add(v1.position,viewPort.offset);
 	v1.color = {1.0f,.0f,0.0f} ;
 
 	Vertex v2;
-	v2.position = {0.5f + VeiwPort.offset.x, 1.0f +  VeiwPort.offset.y,0.5f +  VeiwPort.offset.z};
+	v2.position = {0.5f, 1.0f,0.5f};
+	v1.position = add(v2.position,viewPort.offset);
 	v2.color = {0.0f, 1.0f, 0.0f};
 
 	Vertex v3;
-	v3.position = {1.0f + VeiwPort.offset.x, 0.0f  + VeiwPort.offset.y, 1.0f +  VeiwPort.offset.z};
+	v3.position = {1.0f, 0.0f, 1.};
+	v1.position = add(v3.position,viewPort.offset);
 	v3.color = {1.0f, 0.0f, 1.0f,};
 
 	Vertex v4;
-	v4.position = {0.0f + VeiwPort.offset.x, 0.0f +  VeiwPort.offset.y, 1.0f + VeiwPort.offset.z};
+	v4.position = {0.0f, 0.0f, 1.0f};
+	v1.position = add(v4.position,viewPort.offset);
 	v4.color = {1.0f, 1.0f, 0.0f};
 
 	Vertex v5;
-	v5.position = {1.0f + VeiwPort.offset.x, 0.0f +  VeiwPort.offset.y, 0.0f + VeiwPort.offset.z};
+	v5.position = {1.0f, 0.0f,0.0f};
+	v1.position = add(v5.position,viewPort.offset);
 	v5.color = {0.0f, 0.0f, 1.0f};
 
 	Vertex vertices[] =
@@ -85,4 +95,4 @@ int main()
 	}
 	std::cout << "Program terminated. Exited with code 0";
 	return 0;
-}
+} 
