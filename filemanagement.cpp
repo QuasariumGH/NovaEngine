@@ -23,39 +23,24 @@ std::string StringFromFile(const std::string& filepath)
 }
 Model CreateModel(const std::string& filepath)
 {
-	Model returnModel;
 	std::ifstream fstream(filepath, std::ios::in);
-    std::string line;
+	if (!fstream)
+	{
+		std::cerr << "Error: Unable to load " << filepath << std::endl;
+		exit(1);
+		return Model();
+	}
+
+	Model returnModel;
+	std::string line;
     while (std::getline(fstream, line))
     {
-		if (line.substr(0, 2) == "v " )
+		//Not changing lines? Stays on first line
+		if (line.substr(0) == "v" )
 		{
-			Vertex vertex;
-	        std::istringstream sstream(line.substr(2));
-	        float x, y, z;
-            sstream >> x;
-			sstream >> y;
-			sstream >> z;
-            vertex.position = {x, y, z};
-			vertex.color = {0.0f, 0.0f, 0.0f};
-			
 	    }
-		else if(line.substr(0,2) == "f ")
+		else if(line.substr(0) == "f")
 		{
-			std::istringstream isstream;
-			isstream.str(line.substr(2));
-			int a,b,c; //to store mesh index
-			const char* chh=line.c_str();
-			sscanf (chh, "f %i/%i %i/%i %i/%i",&a,&b,&c); //here it read the line start with f and store the corresponding values in the variables
-			isstream >> a;
-			isstream >> b;
-			isstream >> c;
-			a--;
-			b--;
-			c--;
-			faceIndex.push_back(a);
-			faceIndex.push_back(b);
-			faceIndex.push_back(c);
 		}
 		return returnModel;
    }

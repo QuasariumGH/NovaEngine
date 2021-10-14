@@ -8,6 +8,7 @@ struct Vec3 {
 };
 
 
+
 struct Vertex {
 	Vec3 position = {0.0f, 0.0f, 0.0f}; 
 	Vec3 color = {0.0f, 0.0f, 0.0f};
@@ -21,5 +22,6 @@ struct Model {
     std::vector<Face> faces;
 };
 
-std::string ReadFile(const std::string& filepath);
-Model ModelFromFile(std::string file);
+std::string StringFromFile(const std::string& filepath);
+Model CreateModel(const std::string& filepath);
+

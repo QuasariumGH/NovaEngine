@@ -1,7 +1,3 @@
-﻿  window.cpp
-  filemanagement.cpp
-  glad.cpp
-  main.cpp
-  shader.cpp
-  Generating Code...
-  NovaEngine.vcxproj -> C:\Users\KT\Documents\NovaEngine\x64\Debug\NovaEngine.exe
+﻿  filemanagement.cpp
+C:\Users\djher\OneDrive\Documents\NovaEngine\filemanagement.cpp(50): warning C4715: 'CreateModel': not all control paths return a value
+  NovaEngine.vcxproj -> C:\Users\djher\OneDrive\Documents\NovaEngine\x64\Debug\NovaEngine.exe
