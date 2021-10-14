@@ -3,17 +3,6 @@
 #include "shader.h"
 #include "filemanagement.h"
 
-struct Vec3 {
-	float x;
-	float y;
-	float z;
-};
-
-struct Vertex{
-	Vec3 position = {0.0f, 0.0f, 0.0f}; 
-	Vec3 color = {0.0f, 0.0f, 0.0f};
-};
-
 struct Camera{
 	Vec3 offset = {0.0f,0.0f,0.0f};
 };
@@ -35,46 +24,13 @@ int main()
 	Camera viewPort;
 	 viewPort.offset = {-0.5f, -1.5f, 2.0f};
 
-	Vertex v1;
-	v1.position = {0.0f, 0.0f,0.0};
-	v1.position = add(v1.position,viewPort.offset);
-	v1.color = {1.0f,.0f,0.0f};
-
-	Vertex v2;
-	v2.position = {0.5f, 1.0f,0.5f};
-	v2.position = add(v2.position,viewPort.offset);
-	v2.color = {0.0f, 1.0f, 0.0f};
-
-	Vertex v3;
-	v3.position = {1.0f, 0.0f, 1.};
-	v3.position = add(v3.position,viewPort.offset);
-	v3.color = {1.0f, 0.0f, 1.0f,};
-
-	Vertex v4;
-	v4.position = {0.0f, 0.0f, 1.0f};
-	v4.position = add(v4.position,viewPort.offset);
-	v4.color = {1.0f, 1.0f, 0.0f};
-
-	Vertex v5;
-	v5.position = {1.0f, 0.0f,0.0f};
-	v5.position = add(v5.position,viewPort.offset);
-	v5.color = {0.0f, 0.0f, 1.0f};
-
-	Vertex vertices[] =
-	{
-		v1,v2,v4,
-		v3,v2,v5,
-		v3,v2,v4,
-		v1,v2,v5,
-		v1,v4,v5,
-		v5,v4,v3
-	};
+	Model testMonkey;
 
 	//Vertex Buffer
 	unsigned int buffer;
 	glGenBuffers(1, &buffer);
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, testMonkey.vertices.size(), testMonkey.vertices.data(), GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), 0);
 	glEnableVertexAttribArray(1);
@@ -90,10 +46,11 @@ int main()
 	while (running) 
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / sizeof(Vertex)); //Renders triangle to sscreen
+		glDrawArrays(GL_TRIANGLES, 0, testMonkey.vertices.size()); //Renders triangle to sscreen
 		SDL_GL_SwapWindow(window.SDLWindow);
 		UpdateWindowEvents(window, &running);
 	}
 	std::cout << "Program terminated. Exited with code 0";
+	Model balls = ModelFromFile("assets");
 	return 0;
 } 
