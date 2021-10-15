@@ -1,51 +1,51 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include "filemanagement.h"
-	
+
 std::string StringFromFile(const std::string& filepath)
 {
 	std::string result;
-	std::ifstream stream(filepath, std::ios::in, std::ios::binary);
-	if(!stream)
+	std::ifstream ifstream(filepath, std::ios::in, std::ios::binary);
+	if(!ifstream)
 	{
 		std::cerr << "Error: Unable to load " << filepath << std::endl;
 		exit(1);
 	}
 
-	stream.seekg(0, std::ios::end);
-	result.resize(stream.tellg());
-	stream.seekg(0, std::ios::beg);
-	stream.read(&result[0], result.size());
-	stream.close();
+	ifstream.seekg(0, std::ios::end);
+	result.resize(ifstream.tellg());
+	ifstream.seekg(0, std::ios::beg);
+	ifstream.read(&result[0], result.size());
+	ifstream.close();
 	return result;
 }
+
 Model CreateModel(const std::string& filepath)
 {
-	std::ifstream fstream(filepath, std::ios::in);
+	std::fstream fstream(filepath);
 	if (!fstream)
 	{
 		std::cerr << "Error: Unable to load " << filepath << std::endl;
 		exit(1);
-		return Model();
 	}
 
-	Model returnModel;
-	std::string line;
-    while (std::getline(fstream, line))
-    {
-		//Not changing lines? Stays on first line
-		if (line.substr(0) == "v" )
+	while (!fstream.eof())
+	{
+		std::string line;
+		while (getline(fstream, line))
 		{
-	    }
-		else if(line.substr(0) == "f")
-		{
+			char lineHeader[2];
+			if (line[0] != '#')
+			{
+				sscanf(line.c_str(), "%s", lineHeader);
+			}
 		}
-		return returnModel;
-   }
-
-
+		return Model();
+	}
 }
 
  

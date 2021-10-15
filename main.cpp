@@ -18,6 +18,8 @@ Vec3 add(Vec3 a, Vec3 b)
 
 int main()
 {
+	Model TestMonkey;
+
 	Window window;
 	window = CreateWindow("Nova Engine", 1280, 720);
 
@@ -29,7 +31,6 @@ int main()
 
 	//Vertex Buffer
 	unsigned int buffer;
-	Model TestMonkey;
 
 	 glGenBuffers(1, &buffer);
 	 glBindBuffer(GL_ARRAY_BUFFER, buffer);
@@ -46,13 +47,13 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 	bool running = true;
 	// window loop
+	TestMonkey = CreateModel("assets/TestMonkey.obj");
 	while (running) 
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glDrawArrays(GL_TRIANGLES, 0, vertices.size()); //Renders triangle to sscreen
 		SDL_GL_SwapWindow(window.SDLWindow);
 		UpdateWindowEvents(window, &running);
-		TestMonkey = CreateModel("assets/TestMonkey.obj");
 	}
 	std::cout << "Program terminated. Exited with code 0";
 	return 0;
