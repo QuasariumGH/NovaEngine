@@ -1,3 +1,3 @@
-﻿  filemanagement.cpp
-C:\Users\KT\Documents\NovaEngine\filemanagement.cpp(54): warning C4715: 'CreateModel': not all control paths return a value
+﻿  main.cpp
+C:\Users\KT\Documents\NovaEngine\src\main.cpp(66,48): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   NovaEngine.vcxproj -> C:\Users\KT\Documents\NovaEngine\x64\Debug\NovaEngine.exe

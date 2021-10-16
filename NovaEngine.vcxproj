@@ -151,16 +151,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\novaengine\window.cpp" />
-    <ClCompile Include="filemanagement.cpp" />
-    <ClCompile Include="glad.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="src\window.cpp" />
+    <ClCompile Include="src\filemanagement.cpp" />
+    <ClCompile Include="src\glad.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\model.cpp" />
+    <ClCompile Include="src\shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="filemanagement.h" />
-    <ClInclude Include="shader.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="src\filemanagement.h" />
+    <ClInclude Include="src\math.h" />
+    <ClInclude Include="src\model.h" />
+    <ClInclude Include="src\shader.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

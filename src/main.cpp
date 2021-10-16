@@ -2,9 +2,11 @@
 #include "window.h"
 #include "shader.h"
 #include "filemanagement.h"
+#include "model.h"
+#include "math.h"
 
 struct Camera{
-	Vec3 offset = {0.0f,0.0f,0.0f};
+	Vec3 offset = {0.0f, 0.0f, 0.0f};
 };
 
 Vec3 add(Vec3 a, Vec3 b)
@@ -19,15 +21,25 @@ Vec3 add(Vec3 a, Vec3 b)
 int main()
 {
 	Model TestMonkey;
-
 	Window window;
-	window = CreateWindow("Nova Engine", 1280, 720);
-
 	Camera viewPort;
-	 viewPort.offset = {-0.5f, -1.5f, 2.0f};
 
+	window = CreateWindow("Nova Engine", 1280, 720);
+	viewPort.offset = {-0.5f, -1.5f, 2.0f};
 
-	 std::vector <float> vertices = { 0.0f, 0.0f, 0.0f }; //= TestMonkey.faces.vertices.position;
+	Vertex vert1;
+	vert1.position = {0.0f, 0.0f, 0.0f};
+	vert1.color = {1.0f, 0.0f,0.0f };
+
+	Vertex vert2;
+	vert2.position = {0.0f, 1.0f, 0.0f};
+	vert1.color = {0.0f, 1.0f,0.0f };
+
+	Vertex vert3;
+	vert3.position = {1.0f, 0.0f, 0.0f};
+	vert1.color = {0.0f, 0.0f, 1.0f };
+
+	std::vector<Vertex> vertices = { vert1, vert2, vert3 };
 
 	//Vertex Buffer
 	unsigned int buffer;
