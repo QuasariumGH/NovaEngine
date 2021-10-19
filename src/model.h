@@ -12,7 +12,8 @@ struct Face {
 };
 
 struct Model {
-	std::vector<Face> faces;
+	std::vector<Vertex> vertexArray;
+	std::vector<int> indexArray;
 };
 
 Model CreateModel(const std::string& filepath);

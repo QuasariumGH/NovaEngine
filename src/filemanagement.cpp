@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include "filemanagement.h"
+#include "math.h"
 
 std::string StringFromFile(const std::string& filepath)
 {
@@ -21,6 +22,11 @@ std::string StringFromFile(const std::string& filepath)
 	ifstream.read(&result[0], result.size());
 	ifstream.close();
 	return result;
+}
+
+void outputVec3(Vec3 vector)
+{
+	std::cout << vector.x << " " << vector.y << " " << vector.z << " " << std::endl;
 }
 
 

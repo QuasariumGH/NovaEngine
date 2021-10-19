@@ -25,45 +25,46 @@ int main()
 	Camera viewPort;
 
 	window = CreateWindow("Nova Engine", 1280, 720);
-	viewPort.offset = {-0.5f, -1.5f, 2.0f};
+	viewPort.offset = {0.0f, -1.5f, 2.0f};
 
-	Vertex vert1;
-	vert1.position = {0.0f, 0.0f, 0.0f};
-	vert1.color = {1.0f, 0.0f,0.0f };
-
-	Vertex vert2;
-	vert2.position = {0.0f, 1.0f, 0.0f};
-	vert1.color = {0.0f, 1.0f,0.0f };
-
-	Vertex vert3;
-	vert3.position = {1.0f, 0.0f, 0.0f};
-	vert1.color = {0.0f, 0.0f, 1.0f };
-
-	std::vector<Vertex> vertices = { vert1, vert2, vert3 };
-
+	TestMonkey = CreateModel("assets/TestMonkey.obj");
+	std::vector<Vertex> sortedVertices;
+	for (int i = 0; i < TestMonkey.indexArray.size(); i++)
+	{
+		sortedVertices.push_back(TestMonkey.vertexArray[TestMonkey.indexArray[i]]);
+	}
 	//Vertex Buffer
 	unsigned int buffer;
-
-	 glGenBuffers(1, &buffer);
-	 glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	 glBufferData(GL_ARRAY_BUFFER, vertices.size(), vertices.data(), GL_STATIC_DRAW);
-	 glEnableVertexAttribArray(0);
-	 glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), 0);
-	 glEnableVertexAttribArray(1);
-	 glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (char*)(3 * (sizeof(float))));
+	glGenBuffers(1, &buffer);
+	glBindBuffer(GL_ARRAY_BUFFER, buffer);
+	glBufferData(GL_ARRAY_BUFFER, sortedVertices.size() * sizeof(Vertex), sortedVertices.data(), GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * sizeof(float), 0);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(float), (char*)(3 * (sizeof(float))));
 	
 	std::string vertexShader = StringFromFile("assets/shaders/hellotriangle.vsh");
 	std::string fragmentShader = StringFromFile("assets/shaders/hellotriangle.psh");
 	int htShader = CreateShader(vertexShader, fragmentShader);
 	glUseProgram(htShader);
 	glEnable(GL_DEPTH_TEST);
+
+	for (int i = 0; i < TestMonkey.vertexArray.size(); i++)
+	{
+		outputVec3(TestMonkey.vertexArray[i].position);
+	}
+
 	bool running = true;
-	// window loop
-	TestMonkey = CreateModel("assets/TestMonkey.obj");
+	//Window Loop
+	float time = 0;
 	while (running) 
 	{
+		glUniform3f(0, viewPort.offset.x, viewPort.offset.y, viewPort.offset.z);
+		viewPort.offset.y = sinf(time);
+		time += 0.001;
+
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glDrawArrays(GL_TRIANGLES, 0, vertices.size()); //Renders triangle to sscreen
+		glDrawArrays(GL_TRIANGLES, 0, sortedVertices.size()); //Renders triangle to screen
 		SDL_GL_SwapWindow(window.SDLWindow);
 		UpdateWindowEvents(window, &running);
 	}
