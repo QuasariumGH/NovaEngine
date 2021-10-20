@@ -1,4 +1,2 @@
-﻿  main.cpp
-C:\Users\KT\Documents\NovaEngine\src\main.cpp(76,16): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\KT\Documents\NovaEngine\src\main.cpp(79,54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  NovaEngine.vcxproj -> C:\Users\KT\Documents\NovaEngine\x64\Debug\NovaEngine.exe
+﻿  model.cpp
+  NovaEngine.vcxproj -> C:\Users\djher\OneDrive\Documents\NovaEngine\x64\Debug\NovaEngine.exe

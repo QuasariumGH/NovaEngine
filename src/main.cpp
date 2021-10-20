@@ -9,25 +9,20 @@ struct Camera{
 	Vec3 offset = {0.0f, 0.0f, 0.0f};
 };
 
-Vec3 add(Vec3 a, Vec3 b)
-{
-	Vec3 sumVec;
-	sumVec.x = a.x + b.x;
-	sumVec.y = a.y + b.y;
-	sumVec.z = a.z + b.z;
-	return sumVec;
-}
 
 int main()
 {
 	Model TestMonkey;
 	Window window;
 	Camera viewPort;
+	bool running = true;
+	float deltaTime = 0;
+
 
 	window = CreateWindow("Nova Engine", 1280, 720);
-	viewPort.offset = {0.0f, -1.5f, 2.0f};
+	viewPort.offset = {0.0f, -1.5f, 3.0f};
 
-	TestMonkey = CreateModel("assets/TestMonkey.obj");
+	TestMonkey = CreateModel("assets/models/TestMonkey.obj");
 	std::vector<Vertex> sortedVertices;
 	for (int i = 0; i < TestMonkey.indexArray.size(); i++)
 	{
@@ -49,19 +44,12 @@ int main()
 	glUseProgram(htShader);
 	glEnable(GL_DEPTH_TEST);
 
-	for (int i = 0; i < TestMonkey.vertexArray.size(); i++)
-	{
-		outputVec3(TestMonkey.vertexArray[i].position);
-	}
-
-	bool running = true;
 	//Window Loop
-	float time = 0;
 	while (running) 
 	{
 		glUniform3f(0, viewPort.offset.x, viewPort.offset.y, viewPort.offset.z);
-		viewPort.offset.y = sinf(time);
-		time += 0.001;
+		viewPort.offset.y = sinf(deltaTime);
+		deltaTime += 0.001f;
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glDrawArrays(GL_TRIANGLES, 0, sortedVertices.size()); //Renders triangle to screen

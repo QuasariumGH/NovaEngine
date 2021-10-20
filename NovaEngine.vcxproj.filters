@@ -33,6 +33,9 @@
     <ClCompile Include="src\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Window.h">
@@ -56,5 +59,19 @@
     <None Include="assets\shaders\hellotriangle.psh" />
     <None Include=".gitignore" />
     <None Include="README.md" />
+    <None Include="x64\Debug\vc142.idb" />
+    <None Include="x64\Debug\vc142.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Debug\filemanagement.obj" />
+    <Object Include="x64\Debug\glad.obj" />
+    <Object Include="x64\Debug\main.obj" />
+    <Object Include="x64\Debug\Math.obj" />
+    <Object Include="x64\Debug\model.obj" />
+    <Object Include="x64\Debug\shader.obj" />
+    <Object Include="x64\Debug\window.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="x64\Debug\NovaEngine.log" />
   </ItemGroup>
 </Project>

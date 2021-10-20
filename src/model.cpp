@@ -28,22 +28,19 @@ Model CreateModel(const std::string& filepath)
 					sscanf(line.c_str(), "v %f %f %f", &x, &y, &z);
 					Vertex vertex;
 					vertex.position = { x, y, z };
-					vertex.color = { rand() / float(RAND_MAX),rand() / float(RAND_MAX),rand() / float(RAND_MAX) };
+					vertex.color = { rand() / float(RAND_MAX), 0.0f , rand() / float(RAND_MAX) };
 					returnModel.vertexArray.push_back(vertex);
 				}
 				else if (strcmp(lineHeader, "f") == 0)
 				{
 					uint32_t _, v0, v1, v2;
-					sscanf(line.c_str(), "f %u/%u/%u %u/%u/%u %u/%u/%u", 
-						&v0, &_, &_,
-						&v1, &_, &_,
-						&v2, &_, &_);
+					sscanf(line.c_str(), "f %u/%u/%u %u/%u/%u %u/%u/%u", &v0, &_, &_,&v1, &_, &_,&v2, &_, &_);
 					returnModel.indexArray.push_back(v0 - 1);
 					returnModel.indexArray.push_back(v1 - 1);
 					returnModel.indexArray.push_back(v2 - 1);
 				}
 			}
 		}
-		return returnModel;
 	}
+	return returnModel;
 }

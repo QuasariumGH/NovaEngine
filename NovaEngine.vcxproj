@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Math.cpp" />
     <ClCompile Include="src\window.cpp" />
     <ClCompile Include="src\filemanagement.cpp" />
     <ClCompile Include="src\glad.cpp" />
@@ -170,6 +171,20 @@
     <None Include="assets\shaders\hellotriangle.psh" />
     <None Include="assets\shaders\hellotriangle.vsh" />
     <None Include="README.md" />
+    <None Include="x64\Debug\vc142.idb" />
+    <None Include="x64\Debug\vc142.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Debug\filemanagement.obj" />
+    <Object Include="x64\Debug\glad.obj" />
+    <Object Include="x64\Debug\main.obj" />
+    <Object Include="x64\Debug\Math.obj" />
+    <Object Include="x64\Debug\model.obj" />
+    <Object Include="x64\Debug\shader.obj" />
+    <Object Include="x64\Debug\window.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="x64\Debug\NovaEngine.log" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
