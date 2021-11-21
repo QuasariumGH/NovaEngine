@@ -1,2 +1,18 @@
-﻿  model.cpp
+﻿  math.cpp
+  window.cpp
+  filemanagement.cpp
+  glad.cpp
+  main.cpp
+C:\Users\djher\OneDrive\Documents\NovaEngine\src\main.cpp(55,54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  model.cpp
+  shader.cpp
+  Generating Code...
+  LINK : C:\Users\djher\OneDrive\Documents\NovaEngine\x64\Debug\NovaEngine.exe not found or not built by the last incremental link; performing full link
+x64\Debug\filemanagement.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\glad.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\main.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\Math.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\model.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\shader.obj : warning LNK4042: object specified more than once; extras ignored
+x64\Debug\window.obj : warning LNK4042: object specified more than once; extras ignored
   NovaEngine.vcxproj -> C:\Users\djher\OneDrive\Documents\NovaEngine\x64\Debug\NovaEngine.exe
