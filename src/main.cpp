@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 #include "window.h"
 #include "shader.h"
@@ -15,6 +16,8 @@ int main()
 	Model TestMonkey;
 	Window window;
 	Camera viewPort;
+	float speedCoef = 0.25f; // Changes the speed of le monke
+	float heightCoef = 0.75f; // Changes how high le monke goes
 	bool running = true;
 	float deltaTime = 0;
 
@@ -48,7 +51,7 @@ int main()
 	while (running) 
 	{
 		glUniform3f(0, viewPort.offset.x, viewPort.offset.y, viewPort.offset.z);
-		viewPort.offset.y = sinf(deltaTime);
+		viewPort.offset.y = heightCoef * sinf(speedCoef * deltaTime);
 		deltaTime += 0.001f;
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -9,7 +9,7 @@
 std::string StringFromFile(const std::string& filepath)
 {
 	std::string result;
-	std::ifstream ifstream(filepath, std::ios::in, std::ios::binary);
+	std::ifstream ifstream(filepath, std::ios::in | std::ios::binary);
 	if(!ifstream)
 	{
 		std::cerr << "Error: Unable to load " << filepath << std::endl;
@@ -28,7 +28,3 @@ void outputVec3(Vec3 vector)
 {
 	std::cout << vector.x << " " << vector.y << " " << vector.z << " " << std::endl;
 }
-
-
-
- 

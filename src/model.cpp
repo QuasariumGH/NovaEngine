@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstdint>
+#include <cstring>
 #include "model.h"
 
 Model CreateModel(const std::string& filepath)
